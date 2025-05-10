@@ -1,9 +1,9 @@
+import re
+
+
 def clear_names(file_name: str) -> list:
     """Функция для очистки имён от лишних символов."""
     new_names_list = list()
-    # file_path = os.path.join('C:\\Users\\bione\\Desktop\\my_prj\\
-    # Mentor_Project\\data', file_name)
-    # with open(file_path, 'r', encoding='utf-8') as names_file:
     with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/names.txt", 'r', encoding='utf-8') as names_file:
         names_list = names_file.read().split()
         for name_item in names_list:
@@ -17,11 +17,26 @@ def clear_names(file_name: str) -> list:
     return new_names_list
 
 
+def is_cyrillic(name_item: str) -> bool:
+    """Проверка на вхождение кириллицы в строку."""
+    return bool(re.search("[а-яА-Я]", name_item))
+
+
+def filter_russian_name(names_list: list) -> list:
+    """Фильтр имён написанных на русском."""
+    new_names_list = list()
+    for name_item in  names_list:
+        if is_cyrillic(name_item):
+            new_names_list.append(name_item)
+    return new_names_list
+
 # Конструкция if __name__ == '__main__': гарантирует, что код,
 # связанный с вызовом функции и последующим выводом имен,
 # будет выполнен только тогда, когда файл запускается как основная программа.
 if __name__ == "__main__":
     cleared_name = clear_names("names.txt")
 
-    for i in cleared_name:
-        print(i)
+    # for i in cleared_name:
+        # print(i)
+
+    print(filter_russian_name(cleared_name))
