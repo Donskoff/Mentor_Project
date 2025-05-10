@@ -4,7 +4,7 @@ def clear_names(file_name: str) -> list:
     # file_path = os.path.join('C:\\Users\\bione\\Desktop\\my_prj\\
     # Mentor_Project\\data', file_name)
     # with open(file_path, 'r', encoding='utf-8') as names_file:
-    with open("data/" + file_name) as names_file:
+    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/names.txt", 'r', encoding='utf-8') as names_file:
         names_list = names_file.read().split()
         for name_item in names_list:
             new_name = ""
