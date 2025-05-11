@@ -31,12 +31,6 @@ def filter_russian_name(names_list: list) -> list:
     return new_names_list
 
 
-def save_to_file(file_name: str, data: str) -> None:
-    """Сохраняет данные в файл."""
-    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/" + file_name, 'w') as names_file:
-        names_file.write(data)
-
-
 def filter_english_name(names_list: list) -> list:
     """Фильтр имён написанных на английском."""
     new_names_list = list()
@@ -45,6 +39,11 @@ def filter_english_name(names_list: list) -> list:
             new_names_list.append(name_item)
     return new_names_list
 
+
+def save_to_file(file_name: str, data: str) -> None:
+    """Сохраняет данные в файл."""
+    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/" + file_name, 'w') as names_file:
+        names_file.write(data)
 
 # Конструкция if __name__ == '__main__': гарантирует, что код,
 # связанный с вызовом функции и последующим выводом имен,
