@@ -33,11 +33,17 @@ def filter_russian_name(names_list: list) -> list:
 
 def save_to_file(file_name: str, data: str) -> None:
     """Сохраняет данные в файл."""
-    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/russian_names.txt", 'w') as names_file:
+    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/" + file_name, 'w') as names_file:
         names_file.write(data)
 
 
-
+def filter_english_name(names_list: list) -> list:
+    """Фильтр имён написанных на английском."""
+    new_names_list = list()
+    for name_item in  names_list:
+        if not is_cyrillic(name_item):
+            new_names_list.append(name_item)
+    return new_names_list
 
 
 # Конструкция if __name__ == '__main__': гарантирует, что код,
@@ -48,3 +54,6 @@ if __name__ == "__main__":
 
     filtered_names = filter_russian_name(cleared_name)
     save_to_file('russian_names.txt', '\n'.join(filtered_names))
+
+    filtered_names = filter_english_name(cleared_name)
+    save_to_file('english_names.txt', '\n'.join(filtered_names))
