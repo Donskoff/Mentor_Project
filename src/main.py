@@ -4,8 +4,11 @@ import re
 def clear_names(file_name: str) -> list:
     """Функция для очистки имён от лишних символов."""
     new_names_list = list()
-    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/names.txt",
-              'r', encoding='utf-8') as names_file:
+    with open(
+        "C:/Users/bione/Desktop/my_prj/Mentor_Project/data/names.txt",
+        "r",
+        encoding="utf-8",
+    ) as names_file:
         names_list = names_file.read().split()
         for name_item in names_list:
             new_name = ""
@@ -39,11 +42,16 @@ def filter_english_name(names_list: list) -> list:
         if not is_cyrillic(name_item):
             new_names_list.append(name_item)
     return new_names_list
+
+
 def save_to_file(file_name: str, data: str) -> None:
     """Сохраняет данные в файл."""
-    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/"
-              + file_name, 'w') as names_file:
+    with open(
+        "C:/Users/bione/Desktop/my_prj/Mentor_Project/data/" + file_name, "w"
+    ) as names_file:
         names_file.write(data)
+
+
 # Конструкция if __name__ == '__main__': гарантирует, что код,
 # связанный с вызовом функции и последующим выводом имен,
 # будет выполнен только тогда, когда файл запускается как основная программа.
@@ -51,7 +59,7 @@ if __name__ == "__main__":
     cleared_name = clear_names("names.txt")
 
     filtered_names = filter_russian_name(cleared_name)
-    save_to_file('russian_names.txt', '\n'.join(filtered_names))
+    save_to_file("russian_names.txt", "\n".join(filtered_names))
 
     filtered_names = filter_english_name(cleared_name)
-    save_to_file('english_names.txt', '\n'.join(filtered_names))
+    save_to_file("english_names.txt", "\n".join(filtered_names))
