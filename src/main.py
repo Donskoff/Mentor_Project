@@ -4,7 +4,8 @@ import re
 def clear_names(file_name: str) -> list:
     """Функция для очистки имён от лишних символов."""
     new_names_list = list()
-    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/names.txt", 'r', encoding = 'utf-8') as names_file:
+    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/names.txt",
+              'r', encoding='utf-8') as names_file:
         names_list = names_file.read().split()
         for name_item in names_list:
             new_name = ""
@@ -25,7 +26,7 @@ def is_cyrillic(name_item: str) -> bool:
 def filter_russian_name(names_list: list) -> list:
     """Фильтр имён написанных на русском."""
     new_names_list = list()
-    for name_item in  names_list:
+    for name_item in names_list:
         if is_cyrillic(name_item):
             new_names_list.append(name_item)
     return new_names_list
@@ -34,7 +35,7 @@ def filter_russian_name(names_list: list) -> list:
 def filter_english_name(names_list: list) -> list:
     """Фильтр имён написанных на английском."""
     new_names_list = list()
-    for name_item in  names_list:
+    for name_item in names_list:
         if not is_cyrillic(name_item):
             new_names_list.append(name_item)
     return new_names_list
@@ -42,8 +43,10 @@ def filter_english_name(names_list: list) -> list:
 
 def save_to_file(file_name: str, data: str) -> None:
     """Сохраняет данные в файл."""
-    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/" + file_name, 'w') as names_file:
+    with open("C:/Users/bione/Desktop/my_prj/Mentor_Project/data/"
+              + file_name, 'w') as names_file:
         names_file.write(data)
+
 
 # Конструкция if __name__ == '__main__': гарантирует, что код,
 # связанный с вызовом функции и последующим выводом имен,
